@@ -23,6 +23,10 @@
 # misc
 .DS_Store
 *.pem
+.cursor/
+
+# scripts の出力（プロジェクト直下に生成される）
+result.xlsx
 
 # debug
 npm-debug.log*

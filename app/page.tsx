@@ -1,4 +1,25 @@
+// ✅ 直したコード
+
 import Link from "next/link";
+
+// ページのデータを配列にまとめる（ここだけ変えれば全部反映される）
+const links = [
+  {
+    href: "/words",
+    label: "用語解説",
+    desc: "クラウドなど、よく出てくる言葉の意味を解説",
+  },
+  {
+    href: "/tools",
+    label: "おすすめツール",
+    desc: "VS Code、Cursor、Azure など",
+  },
+  {
+    href: "/setup",
+    label: "Azure 無料アカウント作成",
+    desc: "初心者向けの手順解説",
+  },
+];
 
 export default function Home() {
   return (
@@ -12,39 +33,22 @@ export default function Home() {
         </p>
 
         <ul className="space-y-4">
-          <li>
-            <Link
-              href="/words"
-              className="block p-4 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-950 dark:text-zinc-50 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors"
-            >
-              <span className="font-semibold">用語解説</span>
-              <span className="block text-sm text-zinc-600 dark:text-zinc-400 mt-1">
-                クラウドなど、よく出てくる言葉の意味を解説
-              </span>
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/tools"
-              className="block p-4 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-950 dark:text-zinc-50 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors"
-            >
-              <span className="font-semibold">おすすめツール</span>
-              <span className="block text-sm text-zinc-600 dark:text-zinc-400 mt-1">
-                VS Code、Cursor、Azure など
-              </span>
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/setup"
-              className="block p-4 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-950 dark:text-zinc-50 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors"
-            >
-              <span className="font-semibold">Azure 無料アカウント作成</span>
-              <span className="block text-sm text-zinc-600 dark:text-zinc-400 mt-1">
-                初心者向けの手順解説
-              </span>
-            </Link>
-          </li>
+          {links.map(({ href, label, desc }) => (
+            // ↑ 配列の中身を1つずつ取り出してカードを作る
+            //   { href, label, desc } = 配列の1要素から3つの値を取り出している
+
+            <li key={href}>
+              <Link
+                href={href}
+                className="block p-4 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-950 dark:text-zinc-50 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors"
+              >
+                <span className="font-semibold">{label}</span>
+                <span className="block text-sm text-zinc-600 dark:text-zinc-400 mt-1">
+                  {desc}
+                </span>
+              </Link>
+            </li>
+          ))}
         </ul>
       </main>
     </div>

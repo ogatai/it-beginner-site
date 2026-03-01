@@ -2,6 +2,30 @@
 
 IT・クラウドの基礎を初心者向けに解説する Next.js 製のウェブサイトです。
 
+## プロジェクト構成（サイト最優先）
+
+```
+it-beginner-site/
+├── app/                    # サイト本体（Next.js App Router）
+│   ├── components/         # 共通コンポーネント（Nav など）
+│   ├── setup/              # /setup ページ
+│   ├── tools/              # /tools ページ
+│   ├── words/              # /words ページ
+│   ├── layout.tsx
+│   ├── page.tsx            # トップ
+│   └── globals.css
+├── public/                 # 静的ファイル（画像など）
+├── scripts/                # サイト外の補助スクリプト
+│   ├── extract_a1.py
+│   ├── requirements.txt
+│   └── README.md
+├── next.config.mjs
+├── package.json
+├── tsconfig.json
+├── postcss.config.mjs
+└── eslint.config.mjs
+```
+
 ## 技術スタック
 
 - Next.js 16 (App Router)
@@ -27,7 +51,7 @@ npm run dev
 
 ## 補足スクリプト
 
-- **extract_a1.py** … `data` フォルダ内の全 xlsx の A1 セルを抽出し `result.xlsx` に出力する Python スクリプト。利用時はプロジェクト直下に `data` フォルダを作成し、`pip install -r requirements.txt` で依存関係を入れてから実行する。
+サイトとは別の用途のスクリプトは `scripts/` にまとめています。使い方は `scripts/README.md` を参照。
 
 ## ビルド・Lint
 
