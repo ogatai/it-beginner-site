@@ -1,14 +1,24 @@
 "use client";
-import { useState } from "react";
+
+import { useMemo, useState } from "react";
 import type { Term } from "@/app/data/terms";
 
 export default function TermsList({ terms }: { terms: Term[] }) {
   const [activeCategory, setActiveCategory] = useState<string>("すべて");
-  const categories = ["すべて", ...Array.from(new Set(terms.map((t) => t.c ?? "その他")))];
-  const filtered = activeCategory === "すべて" ? terms : terms.filter((t) => (t.c ?? "その他") === activeCategory);
+
+  const categories = useMemo(
+    () => ["すべて", ...Array.from(new Set(terms.map((t) => t.c ?? "その他")))],
+    [terms],
+  );
+
+  const filtered =
+    activeCategory === "すべて"
+      ? terms
+      : terms.filter((t) => (t.c ?? "その他") === activeCategory);
 
   return (
     <div>
+      <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-4">表示件数: {filtered.length} / 全 {terms.length} 件</p>
       <div className="flex flex-wrap gap-2 mb-8">
         {categories.map((cat) => (
           <button
@@ -28,8 +38,20 @@ export default function TermsList({ terms }: { terms: Term[] }) {
         <section key={term.id} className="mb-10">
           <h2 className="text-xl font-bold text-zinc-950 dark:text-zinc-50 mb-3">{term.t}</h2>
           {term.p.map((paragraph, i) => (
-            <p key={i} className="text-zinc-600 dark:text-zinc-400 mb-2">{paragraph}</p>
+            <p key={i} className="text-zinc-600 dark:text-zinc-400 mb-2">
+              {paragraph}
+            </p>
           ))}
+          {term.sourceUrl ? (
+            <a
+              href={term.sourceUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="text-sm text-blue-600 hover:underline"
+            >
+              出典リンク
+            </a>
+          ) : null}
         </section>
       ))}
     </div>
