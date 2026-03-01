@@ -45,7 +45,8 @@ npm run dev
 ## 主なページ
 
 - **/** … ホーム（用語・ツール・Azure設定へのリンク）
-- **/words** … 用語解説（クラウドなど）
+- **/words** … 初心者向けIT用語200件（雛形）＋出典リンク表示＋外部データ取得ボタン
+- **/api/terms** … 用語データ API（`?limit=200&external=1` で外部要約取得）
 - **/tools** … おすすめツール（VS Code、Cursor、Azure など）
 - **/setup** … Azure 無料アカウントの作成手順
 
