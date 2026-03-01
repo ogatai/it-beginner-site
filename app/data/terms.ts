@@ -2,6 +2,7 @@ export type Term = {
   id: string;
   t: string;
   p: string[];
+  c?: string;
 };
 
 const termsData: Term[] = [
