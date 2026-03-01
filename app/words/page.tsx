@@ -1,36 +1,29 @@
-import { getTerms } from "@/app/data/terms";
-
-export default async function WordsPage() {
-  const terms = await getTerms();
-
+export default function WordsPage() {
   return (
     <main className="max-w-3xl mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold text-zinc-950 dark:text-zinc-50 mb-6">
-        用語解説
+        クラウドって何？
       </h1>
-      <p className="text-zinc-600 dark:text-zinc-400 mb-8">
-        ITでよく出てくる言葉を、初心者向けに解説します。
+
+      <p className="text-zinc-600 dark:text-zinc-400 mb-4">
+        ITの勉強をしていると「クラウド」という言葉をよく見かけます。
+        最初は意味が分からなくて当たり前です。
       </p>
 
-      {terms.map(({ id, t, p }) => (
-        <section
-          key={id}
-          id={id}
-          className="mb-10 scroll-mt-24"
-        >
-          <h2 className="text-xl font-bold text-zinc-950 dark:text-zinc-50 mb-4">
-            {t}って何？
-          </h2>
-          {p.map((para, i) => (
-            <p
-              key={i}
-              className="text-zinc-600 dark:text-zinc-400 mb-4 last:mb-0"
-            >
-              {para}
-            </p>
-          ))}
-        </section>
-      ))}
+      <p className="text-zinc-600 dark:text-zinc-400 mb-4">
+        クラウドとは、インターネットを通して
+        自分のパソコン以外の場所にあるサービスを使う仕組みのことです。
+      </p>
+
+      <p className="text-zinc-600 dark:text-zinc-400 mb-4">
+        例えば、データをUSBに保存する代わりに、
+        ネット上に保存してどこからでも使えるようにするイメージです。
+      </p>
+
+      <p className="text-zinc-600 dark:text-zinc-400">
+        最初は全部理解しなくて大丈夫です。
+        「そんな仕組みがあるんだ」くらいでOKです。
+      </p>
     </main>
   );
 }
