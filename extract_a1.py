@@ -1,6 +1,12 @@
 """
-dataフォルダ内の全xlsxファイルのA1セルを抽出し、
-result.xlsx に一覧として出力するスクリプト
+data フォルダ内の全 xlsx ファイルの A1 セルを抽出し、
+result.xlsx に一覧として出力するスクリプト。
+
+使い方:
+  1. プロジェクト直下に data フォルダを作成する
+  2. 対象の .xlsx ファイルを data に置く
+  3. pip install -r requirements.txt で pandas, openpyxl をインストール
+  4. python extract_a1.py を実行
 """
 import pandas as pd
 from pathlib import Path
